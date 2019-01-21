@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+{% include 'mainapp/includes/inc-head.html' %}
+</head>
+<body>
+<div class="single">
+    <div class="container">
+        {% include 'mainapp/includes/inc-header-logo-and-soc.html' %}
+        <div class="clearfix"></div>
+        <div class="apparel_box">
+            <ul class="login">
+                <li class="login_text"><a href="login.html">Login</a></li>
+                <li class="wish"><a href="checkout.html">Wish List</a></li>
+                <div class='clearfix'></div>
+            </ul>
+            <div class="cart_bg">
+                <ul class="cart">
+                    <i class="cart_icon"></i><p class="cart_desc">$1459.50<br><span class="yellow">2 items</span></p>
+                    <div class='clearfix'></div>
+                </ul>
+                <ul class="product_control_buttons">
+                    <li><a href="#"><img src="../../static/images/close.png" alt=""/></a></li>
+                    <li><a href="#">Edit</a></li>
+                </ul>
+                <div class='clearfix'></div>
+            </div>
+            <ul class="quick_access">
+                <li class="view_cart"><a href="checkout.html">View Cart</a></li>
+                <li class="check"><a href="checkout.html">Checkout</a></li>
+                <div class='clearfix'></div>
+            </ul>
+            <div class="search">
+                <input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
+                <input type="submit" value="">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="main">
+    <div class="content_box">
+        <div class="container">
+            <div class="page-not-found">
+                <h1>404</h1>
+            </div>
+        </div>
+    </div>
+</div>
+{% include 'mainapp/includes/inc-pre-footer.html' %}
+{% include 'mainapp/includes/inc-footer.html' %}
+</body>
+</html>		

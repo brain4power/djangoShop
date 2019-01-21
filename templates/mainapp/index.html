@@ -1,0 +1,412 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    {% include 'mainapp/includes/inc-head.html' %}
+</head>
+<body>
+<div class="header">
+    <div class="container">
+        {% include 'mainapp/includes/inc-header-logo-and-soc.html' %}
+        <div class="index-banner">
+            <div class="wmuSlider example1">
+                <div class="wmuSliderWrapper">
+                    <article style="position: absolute; width: 100%; opacity: 0;">
+                        <div class="banner-wrap">
+                            <div class="bannertop_box">
+                                <ul class="login">
+                                    {% if not user.is_authenticated %}
+                                        <li class="login_text"><a href="{% url 'auth:login' %}">Login</a></li>
+                                    {% endif %}
+
+                                    {% if user.is_authenticated %}
+                                        <li class="login_text">
+                                            <a href="{% url 'auth:edit' %}">
+                                                {{ user.first_name|default:'Пользователь' }}
+                                            </a>
+                                        </li>
+                                        <li class="wish"><a href="{% url 'auth:logout' %}">Logout</a></li>
+                                    {% endif %}
+                                    <div class='clearfix'></div>
+                                </ul>
+                                <div class="cart_bg">
+
+                                    <ul class="cart">
+                                        <i class="cart_icon"></i>
+                                        <p class="cart_desc">
+                                            {% if basket %}
+                                                {{ basket.0.total_cost|floatformat:0 }} руб
+                                            {% else %}
+                                                0 руб
+                                            {% endif %}
+                                            <br><span class="yellow">
+                                            {% if basket %}
+                                                {{ basket.0.total_quantity }} шт
+                                            {% else %}
+                                                0 шт
+                                            {% endif %}
+                                            </span>
+                                        </p>
+                                        <div class='clearfix'></div>
+                                    </ul>
+
+                                    <ul class="product_control_buttons">
+                                        <li><a href="/"><img src="/static/images/close.png" alt=""/></a></li>
+                                        <li><a href="/">Edit</a></li>
+                                    </ul>
+                                    <div class='clearfix'></div>
+                                </div>
+                                <ul class="quick_access">
+                                    <li class="view_cart"><a href="{% url 'basket:view' %}">View Cart</a></li>
+                                    <li class="check"><a href="{% url 'mainapp:checkout' %}">Checkout</a></li>
+                                    <div class='clearfix'></div>
+                                </ul>
+                                <div class="search">
+                                    <input type="text" value="Search" onfocus="this.value = '';"
+                                           onblur="if (this.value == '') {this.value = 'Search';}">
+                                    <input type="submit" value="">
+                                </div>
+                                <div class="welcome_box">
+                                    <h2>Welcome to Surfhouse</h2>
+                                    <p>The onliy online store you will ever need for all your windsurfing and
+                                        kitesurfing and SUP nedds</p>
+                                </div>
+                            </div>
+                            <div class="banner_right">
+                                <h1>Feugait<br> 2014</h1>
+                                <p>Super easy going freeride boards based on the X-Cite Ride shape concept with
+                                    additional cpntrol and super easy jibing.</p>
+                                <a href="/" class="banner_btn">Buy Now</a>
+                            </div>
+                            <div class='clearfix'></div>
+                        </div>
+                    </article>
+                    <article style="position: relative; width: 100%; opacity: 1;">
+                        <div class="banner-wrap">
+                            <div class="bannertop_box">
+                                <ul class="login">
+                                    {% if not user.is_authenticated %}
+                                        <li class="login_text"><a href="{% url 'auth:login' %}">Login</a></li>
+                                    {% endif %}
+
+                                    {% if user.is_authenticated %}
+                                        <li class="login_text">
+                                            <a href="{% url 'auth:edit' %}">
+                                                {{ user.first_name|default:'Пользователь' }}
+                                            </a>
+                                        </li>
+                                        <li class="wish"><a href="{% url 'auth:logout' %}">Logout</a></li>
+                                    {% endif %}
+                                    <div class='clearfix'></div>
+                                </ul>
+                                <div class="cart_bg">
+                                    <ul class="cart">
+                                        <i class="cart_icon"></i>
+                                        <p class="cart_desc">
+                                        {% if basket %}
+                                                {{ basket.0.total_cost|floatformat:0 }} руб
+                                            {% else %}
+                                                0 руб
+                                            {% endif %}
+                                            <br><span class="yellow">
+                                            {% if basket %}
+                                                {{ basket.0.total_quantity }} шт
+                                            {% else %}
+                                                0 шт
+                                            {% endif %}
+                                            </span>
+                                        </p>
+                                        <div class='clearfix'></div>
+                                    </ul>
+                                    <ul class="product_control_buttons">
+                                        <li><a href="/"><img src="/static/images/close.png" alt=""/></a></li>
+                                        <li><a href="/">Edit</a></li>
+                                    </ul>
+                                    <div class='clearfix'></div>
+                                </div>
+                                <ul class="quick_access">
+                                    <li class="view_cart"><a href="{% url 'basket:view' %}">View Cart</a></li>
+                                    <li class="check"><a href="/">Checkout</a></li>
+                                    <div class='clearfix'></div>
+                                </ul>
+                                <div class="search">
+                                    <input type="text" value="Search" onfocus="this.value = '';"
+                                           onblur="if (this.value == '') {this.value = 'Search';}">
+                                    <input type="submit" value="">
+                                </div>
+                                <div class="welcome_box">
+                                    <h2>Welcome to Surfhouse</h2>
+                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
+                                        euism</p>
+                                </div>
+                            </div>
+                            <div class="banner_right">
+                                <h1>Mutation<br> 2014</h1>
+                                <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
+                                    lobortis nisl ut aliquip ex ea commodo.</p>
+                                <a href="/" class="banner_btn">Buy Now</a>
+                            </div>
+                            <div class='clearfix'></div>
+                        </div>
+                    </article>
+                    <article style="position: absolute; width: 100%; opacity: 0;">
+                        <div class="banner-wrap">
+                            <div class="bannertop_box">
+                                <ul class="login">
+                                    {% if not user.is_authenticated %}
+                                        <li class="login_text"><a href="{% url 'auth:login' %}">Login</a></li>
+                                    {% endif %}
+
+                                    {% if user.is_authenticated %}
+                                        <li class="login_text">
+                                            <a href="{% url 'auth:edit' %}">
+                                                {{ user.first_name|default:'Пользователь' }}
+                                            </a>
+                                        </li>
+                                        <li class="wish"><a href="{% url 'auth:logout' %}">Logout</a></li>
+                                    {% endif %}
+                                    <div class='clearfix'></div>
+                                </ul>
+                                <div class="cart_bg">
+                                    <ul class="cart">
+                                        <i class="cart_icon"></i>
+                                        <p class="cart_desc">
+                                           {% if basket %}
+                                                {{ basket.0.total_cost|floatformat:0 }} руб
+                                            {% else %}
+                                                0 руб
+                                            {% endif %}
+                                            <br><span class="yellow">
+                                            {% if basket %}
+                                                {{ basket.0.total_quantity }} шт
+                                            {% else %}
+                                                0 шт
+                                            {% endif %}
+                                            </span>
+                                        </p>
+                                        <div class='clearfix'></div>
+                                    </ul>
+                                    <ul class="product_control_buttons">
+                                        <li><a href="/"><img src="/static/images/close.png" alt=""/></a></li>
+                                        <li><a href="/">Edit</a></li>
+                                    </ul>
+                                    <div class='clearfix'></div>
+                                </div>
+                                <ul class="quick_access">
+                                    <li class="view_cart"><a href="{% url 'basket:view' %}">View Cart</a></li>
+                                    <li class="check"><a href="/">Checkout</a></li>
+                                    <div class='clearfix'></div>
+                                </ul>
+                                <div class="search">
+                                    <input type="text" value="Search" onfocus="this.value = '';"
+                                           onblur="if (this.value == '') {this.value = 'Search';}">
+                                    <input type="submit" value="">
+                                </div>
+                                <div class="welcome_box">
+                                    <h2>Welcome to Surfhouse</h2>
+                                    <p>Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in
+                                        futurum.</p>
+                                </div>
+                            </div>
+                            <div class="banner_right">
+                                <h1>Jp Funride<br> 2014</h1>
+                                <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium
+                                    lectorum. Mirum est notare quam littera.</p>
+                                <a href="/" class="banner_btn">Buy Now</a>
+                            </div>
+                            <div class='clearfix'></div>
+                        </div>
+                    </article>
+                </div>
+                <a class="wmuSliderPrev">Previous</a><a class="wmuSliderNext">Next</a>
+                <ul class="wmuSliderPagination">
+                    <li><a href="/" class="">0</a></li>
+                    <li><a href="/" class="">1</a></li>
+                    <li><a href="/" class="wmuActive">2</a></li>
+                </ul>
+            </div>
+            <script src="/static/js/jquery.wmuSlider.js"></script>
+            <script>
+                $('.example1').wmuSlider();
+            </script>
+        </div>
+    </div>
+</div>
+<div class="main">
+    <div class="content_box">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="menu_box">
+                        <h3 class="menu_head">Menu</h3>
+                        <ul class="nav">
+                            {% for menu_category in menu_categories %}
+                            <li><a href="/{{ menu_category.url }}/">{{ menu_category.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="side_banner">
+                        <div class="banner_img"><img src="/static/images/pic9.jpg" class="img-responsive" alt=""/></div>
+                        <div class="banner_holder">
+                            <h3>Now <br> is <br> Open!</h3>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <h4 class="tag_head">Tags Widget</h4>
+                        <ul class="tags_links">
+                            <li><a href="/">Kitesurf</a></li>
+                            <li><a href="/">Super</a></li>
+                            <li><a href="/">Duper</a></li>
+                            <li><a href="/">Theme</a></li>
+                            <li><a href="/">Men</a></li>
+                            <li><a href="/">Women</a></li>
+                            <li><a href="/">Equipment</a></li>
+                            <li><a href="/">Best</a></li>
+                            <li><a href="/">Accessories</a></li>
+                            <li><a href="/">Men</a></li>
+                            <li><a href="/">Apparel</a></li>
+                            <li><a href="/">Super</a></li>
+                            <li><a href="/">Duper</a></li>
+                            <li><a href="/">Theme</a></li>
+                            <li><a href="/">Responsiv</a></li>
+                            <li><a href="/">Women</a></li>
+                            <li><a href="/">Equipment</a></li>
+                        </ul>
+                        <a href="/" class="link1">View all tags</a>
+                    </div>
+                    <div class="tags">
+                        <h4 class="tag_head">Articles Experts</h4>
+                        <ul class="article_links">
+                            <li><a href="/">Eleifend option congue nihil</a></li>
+                            <li><a href="/">Investigationes demonst</a></li>
+                            <li><a href="/">Qui sequitur mutationem</a></li>
+                            <li><a href="/">videntur parum clar sollemnes</a></li>
+                            <li><a href="/">ullamcorper suscipit lobortis</a></li>
+                            <li><a href="/">commodo consequat. Duis autem</a></li>
+                            <li><a href="/">Investigationes demonst</a></li>
+                            <li><a href="/">ullamcorper suscipit lobortis</a></li>
+                            <li><a href="/">Qui sequitur mutationem</a></li>
+                            <li><a href="/">videntur parum clar sollemnes</a></li>
+                            <li><a href="/">ullamcorper suscipit lobortis</a></li>
+                        </ul>
+                        <a href="/" class="link1">View all</a>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <h3 class="m_1">New Products</h3>
+                    <div class="content_grid">
+                        {% for product in new_products %}
+                        <div class="col_1_of_3 span_1_of_3">
+                            <div class="view view-first">
+                                <a href="{% url 'products:product' product.pk %}">
+                                    <div class="inner_content clearfix">
+                                        <div class="product_image">
+                                            <img src="{{ product.image.url }}" class="img-responsive" alt=""/>
+                                            <div class="mask">
+                                                <div class="info">Quick View</div>
+                                            </div>
+                                            <div class="product_container">
+                                                <div class="cart-left">
+                                                    <p class="title">{{ product.name }}</p>
+                                                </div>
+                                                <div class="price">${{ product.price }}</div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
+                                        <div class="sale-box"><span class="on_sale title_shop">New</span></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="content_grid">
+                        {% for product in products %}
+                        <div class="col_1_of_3 span_1_of_3">
+                            <div class="view view-first">
+                                <a href="{% url 'mainapp:single' %}">
+                                    <div class="inner_content clearfix">
+                                        <div class="product_image">
+                                            <img src="{{ product.image.url }}" class="img-responsive" alt=""/>
+                                            <div class="mask">
+                                                <div class="info">Quick View</div>
+                                            </div>
+                                            <div class="product_container">
+                                                <div class="cart-left">
+                                                    <p class="title">{{ product.name }}</p>
+                                                </div>
+                                                <div class="price">${{ product.price }}</div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
+                                        <div class="sale-box"><span class="on_sale title_shop">New</span></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        <div class="clearfix"></div>
+                    </div>
+                    <h3 class="m_2">Top Products</h3>
+                    <div class="content_grid">
+                        {% for product in top_products %}
+                        <div class="col_1_of_3 span_1_of_3">
+                            <div class="view view-first">
+                                <a href="{% url 'products:product' product.pk %}">
+                                    <div class="inner_content clearfix">
+                                        <div class="product_image">
+                                            <img src="{{ product.image.url }}" class="img-responsive" alt=""/>
+                                            <div class="mask">
+                                                <div class="info">Quick View</div>
+                                            </div>
+                                            <div class="product_container">
+                                                <div class="cart-left">
+                                                    <p class="title">{{ product.name }}</p>
+                                                </div>
+                                                <div class="price">${{ product.price }}</div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        <div class="clearfix"></div>
+                    </div>
+                    <h3 class="m_2">Sale Products</h3>
+                    <div class="content_grid">
+                        {% for product in sale_products %}
+                        <div class="col_1_of_3 span_1_of_3">
+                            <div class="view view-first">
+                                <a href="{% url 'products:product' product.pk %}">
+                                    <div class="inner_content clearfix">
+                                        <div class="product_image">
+                                            <img src="{{ product.image.url }}" class="img-responsive" alt=""/>
+                                            <div class="mask">
+                                                <div class="info">Quick View</div>
+                                            </div>
+                                            <div class="product_container">
+                                                <div class="cart-left">
+                                                    <p class="title">{{ product.name }}</p>
+                                                </div>
+                                                <div class="price">${{ product.price }}</div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include 'mainapp/includes/inc-pre-footer.html' %}
+</div>
+{% include 'mainapp/includes/inc-footer.html' %}
+</body>
+</html>		
