@@ -1,4 +1,7 @@
 from django.shortcuts import render, get_object_or_404
+from django.utils.decorators import method_decorator
+from django.views.generic import ListView
+
 from authapp.models import ShopUser
 from mainapp.models import Product
 from mainapp.models import Category
@@ -23,6 +26,15 @@ def users(request):
     }
     
     return render(request, 'adminapp/users.html', content)
+
+
+class UsersListView(ListView):
+    model = ShopUser
+    template_name = 'adminapp/users.html'
+
+    @method_decorator(user_passes_test(lambda u: u.is_superuser))
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
 
 
 @user_passes_test(lambda u: u.is_superuser)
@@ -59,7 +71,7 @@ def user_update(request, pk):
     
     return render(request, 'adminapp/user_update.html', content)
 
-	
+
 @user_passes_test(lambda u: u.is_superuser)
 def user_delete(request, pk):
     title = 'пользователи/удаление'
