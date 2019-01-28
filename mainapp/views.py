@@ -13,7 +13,6 @@ def main(request):
                'top_products': top_products,
                'sale_products': sale_products,
                'menu_categories': menu_categories,
-               'basket': getBasket(request.user)
                }
     return render(request, 'mainapp/index.html', content)
 
@@ -49,14 +48,6 @@ def product(request, pk):
     content = {
                 'product': product,
                 'menu_categories': menu_categories,
-                'basket': getBasket(request.user)
                }
 
     return render(request, 'mainapp/product.html', content)
-
-
-def getBasket(user):
-    if user.is_authenticated:
-        return Basket.objects.filter(user=user)
-    else:
-        return []
