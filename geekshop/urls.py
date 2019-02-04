@@ -22,7 +22,7 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    #path('admin/', admin.site.urls),
+    path('auth/google/oauth2/', include('social_django.urls', namespace='social')),
     url(r'^', include('mainapp.urls', namespace='mainapp')),
     url(r'^auth/', include('authapp.urls', namespace='auth')),
     url(r'^basket/', include('basketapp.urls', namespace='basket')),
