@@ -41,7 +41,7 @@ class ShopUserRegisterForm(UserCreationForm):
         user = super().save(commit)
         user.is_active = False
         salt = hashlib.sha1(str(random.random()).encode('utf-8')).hexdigest()[:6]
-        user.active_key = hashlib.sha1((user.email + salt).encode('utf-8')).hexdigest()
+        user.activation_key = hashlib.sha1((user.email + salt).encode('utf-8')).hexdigest()
         user.save()
         return user
 

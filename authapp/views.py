@@ -10,7 +10,7 @@ from authapp.models import ShopUser
 
 def send_verify_email(user):
     title = 'Подтверждение авторизации'
-    verify_link = reverse('authapp:verify', args=[user.email, user.active_key])
+    verify_link = reverse('authapp:verify', args=[user.email, user.activation_key])
     message = 'Для подтверждения на портале {domain_name} перейдите по ссылке {domain_name}{verify_link}'.format(
         domain_name=settings.DOMAIN_NAME, verify_link=verify_link)
     from_address = settings.EMAIL_HOST_USER
