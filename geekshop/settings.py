@@ -11,6 +11,13 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 import json
 import os
+# import sentry_sdk
+# from sentry_sdk.integrations.django import DjangoIntegration
+#
+# sentry_sdk.init(
+#     dsn="https://ae52f674f8d94c01b81fa3b5d730f80a@sentry.io/1387871",
+#     integrations=[DjangoIntegration()]
+# )
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -43,6 +50,7 @@ INSTALLED_APPS = [
     'basketapp',
     'adminapp',
     'social_django',
+    'ordersapp',
 ]
 
 MIDDLEWARE = [

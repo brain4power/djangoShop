@@ -57,6 +57,7 @@ class Product(models.Model):
     quantity = models.IntegerField()
     reviews = models.IntegerField()
     image = models.ImageField(upload_to="products", blank=True, null=True)
+    is_active = models.BooleanField(verbose_name='категория активна', default=True)
 
     def __str__(self):
         return self.name
