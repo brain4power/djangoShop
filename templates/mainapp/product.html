@@ -61,18 +61,14 @@
             <div class="cart_bg">
                 <ul class="cart">
                     <i class="cart_icon"></i>
-                    <p class="cart_desc">{{ basket.0.total_cost|floatformat:0 }} руб<br><span class="yellow">{{ basket.0.total_quantity }} шт</span></p>
+                    <p class="cart_desc">{{ basket.0.total_cost|floatformat:0 }} $<br><span class="yellow">{{ basket.0.total_quantity }} шт</span></p>
                     <div class='clearfix'></div>
-                </ul>
-                <ul class="product_control_buttons">
-                    <li><a href="#"><img src="/static/images/close.png" alt=""/></a></li>
-                    <li><a href="#">Edit</a></li>
                 </ul>
                 <div class='clearfix'></div>
             </div>
             <ul class="quick_access">
                 <li class="view_cart"><a href="{% url 'basket:view' %}">View Cart</a></li>
-                <li class="check"><a href="{% url 'mainapp:checkout' %}">Checkout</a></li>
+                <li class="check"><a href="{% url 'basket:view' %}">Checkout</a></li>
                 <div class='clearfix'></div>
             </ul>
             <div class="search">
@@ -94,29 +90,6 @@
                             {% for menu_category in menu_categories %}
                                 <li><a href="/{{ menu_category.url }}/">{{ menu_category.name }}</a></li>
                             {% endfor %}
-                        </ul>
-                    </div>
-                    <div class="category">
-                        <h3 class="menu_head">Category Options</h3>
-                        <ul class="category_nav">
-                            <li><a href="#">Men</a></li>
-                            <li><a href="#">Women</a></li>
-                            <li><a href="#">Kids</a></li>
-                            <li><a href="#">Wetsuits</a></li>
-                            <li><a href="#">Outerwear</a></li>
-                        </ul>
-                    </div>
-                    <div class="category">
-                        <h3 class="menu_head">Brand Options</h3>
-                        <ul class="category_nav">
-                            <li><a href="#">Billabong</a></li>
-                            <li><a href="#">Element</a></li>
-                            <li><a href="#">o'neill</a></li>
-                            <li><a href="#">Oakley</a></li>
-                            <li><a href="#">Reef</a></li>
-                            <li><a href="#">Quiksilver</a></li>
-                            <li><a href="#">Ripcurl</a></li>
-                            <li><a href="#">Jackss</a></li>
                         </ul>
                     </div>
                     <div class="tags">
@@ -238,34 +211,6 @@
                             </div>
                             <h2 class="quick">Quick Overview:</h2>
                             <p class="quick_desc">{{ product.quick_overview }}</p>
-                            <ul class="size">
-                                <h3>Size</h3>
-                                <li><a href="#">25</a></li>
-                                <li><a href="#">26</a></li>
-                                <li><a href="#">27</a></li>
-                                <li><a href="#">28</a></li>
-                                <li><a href="#">29</a></li>
-                                <li><a href="#">30</a></li>
-                                <li><a href="#">31</a></li>
-                                <li><a href="#">32</a></li>
-                                <li><a href="#">33</a></li>
-                            </ul>
-                            <ul class="size">
-                                <h3>Length</h3>
-                                <li><a href="#">32</a></li>
-                                <li><a href="#">34</a></li>
-                            </ul>
-                            <ul class="product-qty">
-                                <span>Quantity:</span>
-                                <select>
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                    <option>6</option>
-                                </select>
-                            </ul>
                             <div class="btn_form">
                                 <form action="{% url 'basket:add' product.pk %}">
                                     <input type="submit" value="Add to Cart" title="">
