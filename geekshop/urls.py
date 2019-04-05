@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from django.conf.urls import url, include
+from django.conf.urls import include
 import mainapp.views as mainapp
 from django.conf import settings
 from django.conf.urls.static import static
@@ -23,12 +23,14 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('auth/google/oauth2/', include('social_django.urls', namespace='social')),
-    url(r'^', include('mainapp.urls', namespace='mainapp')),
-    url(r'^auth/', include('authapp.urls', namespace='auth')),
-    url(r'^basket/', include('basketapp.urls', namespace='basket')),
-    url(r'^products/', include('mainapp.urls', namespace='products')),
-    url(r'^admin/', include('adminapp.urls', namespace='admin')),
+    path('', include('mainapp.urls', namespace='mainapp')),
+    path('auth/', include('authapp.urls', namespace='auth')),
+    path('basket/', include('basketapp.urls', namespace='basket')),
+    path('products/', include('mainapp.urls', namespace='products')),
+    path('admin/', include('adminapp.urls', namespace='admin')),
     path('order/', include('ordersapp.urls', namespace='order')),
+    path('auth/', include('authapp.urls', namespace='auth')),
+
 ]
 
 if settings.DEBUG:
