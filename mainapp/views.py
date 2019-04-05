@@ -33,7 +33,10 @@ def checkout(request):
 
 
 def contact(request):
-    return render(request, 'mainapp/contact.html')
+    menu_categories = MenuCategory.objects.all()
+    content = {'menu_categories': menu_categories,
+               }
+    return render(request, 'mainapp/contact.html', content)
 
 
 def login(request):
