@@ -13,13 +13,10 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
-import mainapp.views as mainapp
 from django.conf import settings
 from django.conf.urls.static import static
-
 
 urlpatterns = [
     path('auth/google/oauth2/', include('social_django.urls', namespace='social')),
@@ -30,7 +27,6 @@ urlpatterns = [
     path('admin/', include('adminapp.urls', namespace='admin')),
     path('order/', include('ordersapp.urls', namespace='order')),
     path('auth/', include('authapp.urls', namespace='auth')),
-
 ]
 
 if settings.DEBUG:

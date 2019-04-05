@@ -1,12 +1,11 @@
-from django.conf.urls import url
-
+from django.urls import re_path
 import basketapp.views as basketapp
 
 app_name = 'basketapp'
 
 
 urlpatterns = [
-    url(r'^$', basketapp.basket, name='view'),
-    url(r'^add/(?P<pk>\d+)/$', basketapp.basket_add, name='add'),
-    url(r'^remove/(?P<pk>\d+)/$', basketapp.basket_remove, name='remove'),
+    re_path(r'^$', basketapp.basket, name='view'),
+    re_path(r'^add/(?P<pk>\d+)/$', basketapp.basket_add, name='add'),
+    re_path(r'^remove/(?P<pk>\d+)/$', basketapp.basket_remove, name='remove'),
 ]
