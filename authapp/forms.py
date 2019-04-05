@@ -47,7 +47,7 @@ class ShopUserRegisterForm(UserCreationForm):
 
 
 class ShopUserEditForm(UserChangeForm):
-    username = forms.CharField(label='ЛОгин')
+    username = forms.CharField(label='Логин')
 
     class Meta:
         model = ShopUser

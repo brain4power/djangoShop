@@ -2287,3 +2287,7 @@ h3.like, h3.recent {
 	margin-left: 0em;
 }
 }
+.containerAuth {
+	width: 45%;
+	margin: auto;
+}
