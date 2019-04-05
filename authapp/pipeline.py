@@ -5,9 +5,9 @@ def save_user_profile(backend, user, response, *args, **kwargs):
     if backend.name == "google-oauth2":
         if 'gender' in response.keys():
             if response['gender'] == 'male':
-               user.shopuserprofile.gender = 'M'
+                user.shopuserprofile.gender = 'M'
             else:
-               user.shopuserprofile.gender = 'W'
+                user.shopuserprofile.gender = 'W'
 
         if 'tagline' in response.keys():
             user.shopuserprofile.tagline = response['tagline']
@@ -18,8 +18,8 @@ def save_user_profile(backend, user, response, *args, **kwargs):
         if 'ageRange' in response.keys():
             minAge = response['ageRange']['min']
             if int(minAge) < 18:
-               user.delete()
-               raise AuthForbidden('social_core.backends.google.GoogleOAuth2')
+                user.delete()
+                raise AuthForbidden('social_core.backends.google.GoogleOAuth2')
 
         user.save()
 

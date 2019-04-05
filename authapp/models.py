@@ -7,7 +7,7 @@ from django.dispatch import receiver
 
 class ShopUser(AbstractUser):
     avatar = models.ImageField(upload_to='users_avatars', blank=True)
-    age = models.PositiveIntegerField(verbose_name='Возраст', blank=True, null = True)
+    age = models.PositiveIntegerField(verbose_name='Возраст', blank=True, null=True)
     activation_key = models.CharField(max_length=128, verbose_name='код подтверждения', blank=True)
     # срок хранения ключа
     activation_key_expires = models.DateTimeField(default=timezone.now() + timezone.timedelta(48))

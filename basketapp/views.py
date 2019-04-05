@@ -7,8 +7,8 @@ from django.urls import reverse
 
 
 @login_required
-#@user_passes_test(lambda u: u.is_superuser)
-#@user_passes_test(lambda u: u.is_superuser and u.age>18)
+# @user_passes_test(lambda u: u.is_superuser)
+# @user_passes_test(lambda u: u.is_superuser and u.age>18)
 def basket(request):
     title = 'корзина'
 

@@ -1,7 +1,5 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Product, MenuCategory
-from basketapp.models import Basket
-import datetime
 
 
 def main(request):
@@ -46,8 +44,8 @@ def product(request, pk):
     menu_categories = MenuCategory.objects.all()
 
     content = {
-                'product': product,
-                'menu_categories': menu_categories,
-               }
+        'product': product,
+        'menu_categories': menu_categories,
+    }
 
     return render(request, 'mainapp/product.html', content)

@@ -9,8 +9,8 @@ class ShopUserAdminEditForm(ShopUserEditForm):
     class Meta:
         model = ShopUser
         fields = '__all__'
-        
-        
+
+
 class CategoryEditForm(forms.ModelForm):
     class Meta:
         model = Category
