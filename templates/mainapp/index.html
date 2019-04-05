@@ -29,7 +29,6 @@
                                     <div class='clearfix'></div>
                                 </ul>
                                 <div class="cart_bg">
-
                                     <ul class="cart">
                                         <i class="cart_icon"></i>
                                         <p class="cart_desc">
@@ -102,7 +101,7 @@
                                     <ul class="cart">
                                         <i class="cart_icon"></i>
                                         <p class="cart_desc">
-                                        {% if basket %}
+                                            {% if basket %}
                                                 {{ basket.0.total_cost|floatformat:0 }} руб
                                             {% else %}
                                                 0 руб
@@ -170,7 +169,7 @@
                                     <ul class="cart">
                                         <i class="cart_icon"></i>
                                         <p class="cart_desc">
-                                           {% if basket %}
+                                            {% if basket %}
                                                 {{ basket.0.total_cost|floatformat:0 }} руб
                                             {% else %}
                                                 0 руб
@@ -240,7 +239,7 @@
                         <h3 class="menu_head">Menu</h3>
                         <ul class="nav">
                             {% for menu_category in menu_categories %}
-                            <li><a href="/{{ menu_category.url }}/">{{ menu_category.name }}</a></li>
+                                <li><a href="/{{ menu_category.url }}/">{{ menu_category.name }}</a></li>
                             {% endfor %}
                         </ul>
                     </div>
@@ -295,109 +294,109 @@
                     <h3 class="m_1">New Products</h3>
                     <div class="content_grid">
                         {% for product in new_products %}
-                        <div class="col_1_of_3 span_1_of_3">
-                            <div class="view view-first">
-                                <a href="{% url 'products:product' product.pk %}">
-                                    <div class="inner_content clearfix">
-                                        <div class="product_image">
-                                            <img src="{{ product.image.url }}" class="img-responsive" alt=""/>
-                                            <div class="mask">
-                                                <div class="info">Quick View</div>
-                                            </div>
-                                            <div class="product_container">
-                                                <div class="cart-left">
-                                                    <p class="title">{{ product.name }}</p>
+                            <div class="col_1_of_3 span_1_of_3">
+                                <div class="view view-first">
+                                    <a href="{% url 'products:product' product.pk %}">
+                                        <div class="inner_content clearfix">
+                                            <div class="product_image">
+                                                <img src="{{ product.image.url }}" class="img-responsive" alt=""/>
+                                                <div class="mask">
+                                                    <div class="info">Quick View</div>
                                                 </div>
-                                                <div class="price">${{ product.price }}</div>
-                                                <div class="clearfix"></div>
+                                                <div class="product_container">
+                                                    <div class="cart-left">
+                                                        <p class="title">{{ product.name }}</p>
+                                                    </div>
+                                                    <div class="price">${{ product.price }}</div>
+                                                    <div class="clearfix"></div>
+                                                </div>
                                             </div>
+                                            <div class="sale-box"><span class="on_sale title_shop">New</span></div>
                                         </div>
-                                        <div class="sale-box"><span class="on_sale title_shop">New</span></div>
-                                    </div>
-                                </a>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
                         {% endfor %}
                         <div class="clearfix"></div>
                     </div>
                     <div class="content_grid">
                         {% for product in products %}
-                        <div class="col_1_of_3 span_1_of_3">
-                            <div class="view view-first">
-                                <a href="{% url 'mainapp:single' %}">
-                                    <div class="inner_content clearfix">
-                                        <div class="product_image">
-                                            <img src="{{ product.image.url }}" class="img-responsive" alt=""/>
-                                            <div class="mask">
-                                                <div class="info">Quick View</div>
-                                            </div>
-                                            <div class="product_container">
-                                                <div class="cart-left">
-                                                    <p class="title">{{ product.name }}</p>
+                            <div class="col_1_of_3 span_1_of_3">
+                                <div class="view view-first">
+                                    <a href="{% url 'mainapp:single' %}">
+                                        <div class="inner_content clearfix">
+                                            <div class="product_image">
+                                                <img src="{{ product.image.url }}" class="img-responsive" alt=""/>
+                                                <div class="mask">
+                                                    <div class="info">Quick View</div>
                                                 </div>
-                                                <div class="price">${{ product.price }}</div>
-                                                <div class="clearfix"></div>
+                                                <div class="product_container">
+                                                    <div class="cart-left">
+                                                        <p class="title">{{ product.name }}</p>
+                                                    </div>
+                                                    <div class="price">${{ product.price }}</div>
+                                                    <div class="clearfix"></div>
+                                                </div>
                                             </div>
+                                            <div class="sale-box"><span class="on_sale title_shop">New</span></div>
                                         </div>
-                                        <div class="sale-box"><span class="on_sale title_shop">New</span></div>
-                                    </div>
-                                </a>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
                         {% endfor %}
                         <div class="clearfix"></div>
                     </div>
                     <h3 class="m_2">Top Products</h3>
                     <div class="content_grid">
                         {% for product in top_products %}
-                        <div class="col_1_of_3 span_1_of_3">
-                            <div class="view view-first">
-                                <a href="{% url 'products:product' product.pk %}">
-                                    <div class="inner_content clearfix">
-                                        <div class="product_image">
-                                            <img src="{{ product.image.url }}" class="img-responsive" alt=""/>
-                                            <div class="mask">
-                                                <div class="info">Quick View</div>
-                                            </div>
-                                            <div class="product_container">
-                                                <div class="cart-left">
-                                                    <p class="title">{{ product.name }}</p>
+                            <div class="col_1_of_3 span_1_of_3">
+                                <div class="view view-first">
+                                    <a href="{% url 'products:product' product.pk %}">
+                                        <div class="inner_content clearfix">
+                                            <div class="product_image">
+                                                <img src="{{ product.image.url }}" class="img-responsive" alt=""/>
+                                                <div class="mask">
+                                                    <div class="info">Quick View</div>
                                                 </div>
-                                                <div class="price">${{ product.price }}</div>
-                                                <div class="clearfix"></div>
+                                                <div class="product_container">
+                                                    <div class="cart-left">
+                                                        <p class="title">{{ product.name }}</p>
+                                                    </div>
+                                                    <div class="price">${{ product.price }}</div>
+                                                    <div class="clearfix"></div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </a>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
                         {% endfor %}
                         <div class="clearfix"></div>
                     </div>
                     <h3 class="m_2">Sale Products</h3>
                     <div class="content_grid">
                         {% for product in sale_products %}
-                        <div class="col_1_of_3 span_1_of_3">
-                            <div class="view view-first">
-                                <a href="{% url 'products:product' product.pk %}">
-                                    <div class="inner_content clearfix">
-                                        <div class="product_image">
-                                            <img src="{{ product.image.url }}" class="img-responsive" alt=""/>
-                                            <div class="mask">
-                                                <div class="info">Quick View</div>
-                                            </div>
-                                            <div class="product_container">
-                                                <div class="cart-left">
-                                                    <p class="title">{{ product.name }}</p>
+                            <div class="col_1_of_3 span_1_of_3">
+                                <div class="view view-first">
+                                    <a href="{% url 'products:product' product.pk %}">
+                                        <div class="inner_content clearfix">
+                                            <div class="product_image">
+                                                <img src="{{ product.image.url }}" class="img-responsive" alt=""/>
+                                                <div class="mask">
+                                                    <div class="info">Quick View</div>
                                                 </div>
-                                                <div class="price">${{ product.price }}</div>
-                                                <div class="clearfix"></div>
+                                                <div class="product_container">
+                                                    <div class="cart-left">
+                                                        <p class="title">{{ product.name }}</p>
+                                                    </div>
+                                                    <div class="price">${{ product.price }}</div>
+                                                    <div class="clearfix"></div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </a>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
                         {% endfor %}
                         <div class="clearfix"></div>
                     </div>

@@ -53,7 +53,8 @@ class Product(models.Model):
     additional_information = models.TextField()
     size = models.ForeignKey(Size, on_delete=models.PROTECT)
     length = models.IntegerField()
-    # есть пара сигналов во views orderapp
+
+    # есть пара сигналов во views ordersapp
     quantity = models.IntegerField()
     reviews = models.IntegerField()
     image = models.ImageField(upload_to="products", blank=True, null=True)

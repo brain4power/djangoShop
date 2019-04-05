@@ -16,7 +16,12 @@ def main(request):
 
 
 def apparel(request):
-    return render(request, 'mainapp/apparel.html')
+    menu_categories = MenuCategory.objects.all()
+    apparel_products = Product.objects.all().filter(menu_category=8)
+    content = {'apparel_products': apparel_products,
+               'menu_categories': menu_categories,
+               }
+    return render(request, 'mainapp/apparel.html', content)
 
 
 def page_not_found(request):
