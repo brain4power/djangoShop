@@ -34,8 +34,7 @@
                                     {{ field }}
                                 {% else %}
                                     {% if field.value %}
-                                        <span class="orderitems-{{ forloop.parentloop.counter0 }}-price">{{ field.value }}</span>
-                                        руб
+                                        <span class="orderitems-{{ forloop.parentloop.counter0 }}-price">{{ field.value }}</span> руб
                                     {% endif %}
                                 {% endif %}
                             </td>
@@ -44,10 +43,8 @@
                     </tr>
                 {% endfor %}
             </table>
-            <button type="submit" value="сохранить" class="btn btn-default btn-round form-control last">сохранить
-            </button>
+            <button type="submit" value="сохранить" class="btn btn-default btn-round form-control last">сохранить</button>
             {% include 'ordersapp/includes/inc_order_actions.html' %}
         </form>
     </div>
-
 {% endblock %}

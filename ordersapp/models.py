@@ -21,8 +21,6 @@ class Order(models.Model):
         (CANCEL, 'отменен'),
     )
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    # user = models.ForeignKey(ShopUser, on_delete=models.CASCADE)
-    # user = models.ForeignKey('authap.ShopUser', on_delete=models.CASCADE)
     created = models.DateTimeField(verbose_name='создан', auto_now_add=True)
     updated = models.DateTimeField(verbose_name='обновлен', auto_now=True)
     status = models.CharField(verbose_name='статус', max_length=3, choices=ORDER_STATUS_CHOICES, default=FORMING)
@@ -38,7 +36,6 @@ class Order(models.Model):
 
     def get_total_quantity(self):
         items = self.orderitems.select_related()
-        # items = self.orderitems.all()
         return sum(list(map(lambda x: x.quantity, items)))
 
     def get_product_type_quantity(self):

@@ -1,37 +1,24 @@
 from django.shortcuts import get_object_or_404, HttpResponseRedirect
+from django.urls import reverse, reverse_lazy
+from django.dispatch import receiver
+from django.views.generic import CreateView, UpdateView, DeleteView, ListView
+from django.views.generic.detail import DetailView
+from django.db import transaction
+from django.db.models.signals import pre_save, pre_delete
+from django.forms import inlineformset_factory
 
 from basketapp.models import Basket
 from ordersapp.models import Order, OrderItem
-
-from django.views.generic import CreateView, UpdateView, DeleteView, ListView
-from django.views.generic.detail import DetailView
-from django.urls import reverse, reverse_lazy
-from django.db import transaction
-
 from ordersapp.forms import OrderItemForm
-from django.forms import inlineformset_factory
 
-from django.dispatch import receiver
-from django.db.models.signals import pre_save, pre_delete
+from django.http import JsonResponse
+from mainapp.models import Product
 
 
 class OrderList(ListView):
     model = Order
 
-    # Стандартные методы для переопределения
-    # --------------- Основные -------------
-    # get - пришел гет запрос
-    # get_context_data - работа с контекстом
-    # -------------Специальные --------------
-    # get_queryset - получение объектов
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['title'] = 'ORDER LIST'
-        return context
-
     def get_queryset(self):
-        #
         return Order.objects.filter(user=self.request.user)
 
 
@@ -83,21 +70,10 @@ class OrderItemsCreate(CreateView):
 class OrderRead(DetailView):
     model = Order
 
-    # get
-    # get_context_data
-    # get_queryset - есть но не переопределяется обычно
-
-    # get_object - получение одного объекта
-
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        print('context', context)
+        context = super(OrderRead, self).get_context_data(**kwargs)
         context['title'] = 'заказ/просмотр'
         return context
-
-    # def get(self, request, *args, **kwargs):
-    #     print('Что то делаем')
-    #     return super().get(request, *args, **kwargs)
 
 
 class OrderItemsUpdate(UpdateView):
@@ -153,8 +129,7 @@ def order_forming_complete(request, pk):
 def product_quantity_update_save(sender, update_fields, instance, **kwargs):
     if update_fields is 'quantity' or 'product':
         if instance.pk:
-            instance.product.quantity -= instance.quantity - \
-                                         sender.get_item(instance.pk).quantity
+            instance.product.quantity -= instance.quantity - sender.get_item(instance.pk).quantity
         else:
             instance.product.quantity -= instance.quantity
         instance.product.save()
@@ -165,3 +140,12 @@ def product_quantity_update_save(sender, update_fields, instance, **kwargs):
 def product_quantity_update_delete(sender, instance, **kwargs):
     instance.product.quantity += instance.quantity
     instance.product.save()
+
+
+def get_product_price(request, pk):
+    if request.is_ajax():
+        product = Product.objects.filter(pk=int(pk)).first()
+        if product:
+            return JsonResponse({'price': product.price})
+        else:
+            return JsonResponse({'price': 0})
